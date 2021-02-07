@@ -1,0 +1,11 @@
+FROM php:7.2-fpm
+RUN docker-php-ext-install pdo_mysql
+RUN apt-get update && apt-get install -y \
+zip \
+unzip \
+net-tools 
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
