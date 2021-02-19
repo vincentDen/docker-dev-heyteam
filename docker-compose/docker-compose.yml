@@ -30,6 +30,8 @@ services:
     volumes:
     - ~/www/WEB_APP_BACK:/var/www
     - ~/docker/build/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    logging:
+      driver: "none"
 
   mysql:
     container_name: mysql
