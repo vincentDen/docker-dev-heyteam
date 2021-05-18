@@ -4,7 +4,7 @@ services:
   vue:
     container_name: vue
     build:
-      context: ~/www/WEB_APP_FRONT
+      context: ../build/vue
     ports:
     - "8080:8080"
     volumes:
@@ -46,3 +46,16 @@ services:
     image: "redis:alpine"
     ports:
     - "6379:6379"
+
+  mysql_testing:
+    container_name: mysql_testing
+    image: mysql:5.7.30
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: master
+      MYSQL_PASSWORD: master
+    ports:
+      - "3308:3306"
+    volumes:
+      - ~/docker/build/mysql_testing/:/docker-entrypoint-initdb.d
+      - ~/docker/build/mysql_testing/data:/var/lib/mysql
